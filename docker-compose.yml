@@ -1,0 +1,6 @@
+services:
+  mascota-service:
+    build: .
+    ports:
+      - "4004:4004"
+    env_file: .env
