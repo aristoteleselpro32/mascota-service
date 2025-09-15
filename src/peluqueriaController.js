@@ -22,18 +22,22 @@ async function crearPeluqueria(req, res) {
       motivo,
       encargado,
       detalles,
-      observaciones
+      observaciones,
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nuevo = new Peluqueria({
       mascota_id,
       veterinario_id,
-      fecha_hora,
+      fecha: fecha_hora, // Corrección: alinear con el nombre del campo en el esquema
       servicio,
       motivo,
       encargado,
       detalles,
-      observaciones
+      observaciones,
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nuevo.save();
@@ -73,4 +77,3 @@ module.exports = {
   actualizarPeluqueria,
   eliminarPeluqueria
 };
-

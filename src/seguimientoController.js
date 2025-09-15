@@ -22,18 +22,22 @@ async function crearSeguimiento(req, res) {
       motivo,
       detalles,
       proximo_control,
-      examen_fisico // Objeto opcional con campos clínicos
+      examen_fisico, // Objeto opcional con campos clínicos
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nuevo = new Seguimiento({
       mascota_id,
       veterinario_id,
-      fecha_hora,
-      tipo_seguimiento,
+      fecha: fecha_hora, // Corrección: alinear con el nombre del campo en el esquema
+      tipo: tipo_seguimiento, // Corrección: alinear con el nombre del campo en el esquema
       motivo,
       detalles,
       proximo_control,
-      examen_fisico
+      examen_fisico,
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nuevo.save();

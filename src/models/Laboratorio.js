@@ -7,7 +7,9 @@ const LaboratorioSchema = new mongoose.Schema({
   encargado: String,
   prueba: String,
   cantidad: String,
-  diagnostico_presuntivo: String
+  diagnostico_presuntivo: String,
+  precio: { type: Number, default: 0 }, // Nuevo campo para precio
+  estado: { type: String, enum: ['pendiente', 'pagado'], default: 'pendiente' } // Nuevo campo para estado de pago
 }, { timestamps: true });
 
 module.exports = mongoose.model('Laboratorio', LaboratorioSchema);

@@ -24,7 +24,9 @@ async function crearConsulta(req, res) {
       interpretacion,
       plan_terapeutico,
       proximo_control,
-      examen_general // objeto opcional
+      examen_general, // objeto opcional
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nuevaConsulta = new Consulta({
@@ -37,7 +39,9 @@ async function crearConsulta(req, res) {
       interpretacion,
       plan_terapeutico,
       proximo_control,
-      examen_general: examen_general || {}
+      examen_general: examen_general || {},
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nuevaConsulta.save();

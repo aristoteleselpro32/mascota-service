@@ -19,7 +19,9 @@ async function crearMedicamento(req, res) {
       veterinario_id,
       fecha,
       diagnostico,
-      lista_medicamentos // Array de medicamentos con: nombre, presentacion, cantidad, posologia
+      lista_medicamentos, // Array de medicamentos con: nombre, presentacion, cantidad, posologia
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nuevoRegistro = new Medicamento({
@@ -27,7 +29,9 @@ async function crearMedicamento(req, res) {
       veterinario_id,
       fecha,
       diagnostico,
-      lista_medicamentos
+      medicamentos: lista_medicamentos, // Corrección: nombre del campo en el esquema es 'medicamentos'
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nuevoRegistro.save();

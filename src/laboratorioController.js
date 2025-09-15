@@ -21,7 +21,9 @@ async function crearPruebaLaboratorio(req, res) {
       encargado,
       prueba,
       cantidad,
-      diagnostico_presuntivo
+      diagnostico_presuntivo,
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nueva = new Laboratorio({
@@ -31,7 +33,9 @@ async function crearPruebaLaboratorio(req, res) {
       encargado,
       prueba,
       cantidad,
-      diagnostico_presuntivo
+      diagnostico_presuntivo,
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nueva.save();

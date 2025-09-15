@@ -26,7 +26,9 @@ async function crearCirugia(req, res) {
       tratamiento,
       observaciones,
       complicaciones,
-      medicamentos // Array con objetos: { nombre, presentacion, cantidad, posologia }
+      medicamentos,
+      precio = 0, // Nuevo: default 0
+      estado = 'pendiente' // Nuevo: default pendiente
     } = req.body;
 
     const nuevaCirugia = new Cirugia({
@@ -41,7 +43,9 @@ async function crearCirugia(req, res) {
       tratamiento,
       observaciones,
       complicaciones,
-      medicamentos
+      medicamentos,
+      precio, // Nuevo
+      estado // Nuevo
     });
 
     await nuevaCirugia.save();

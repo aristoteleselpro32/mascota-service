@@ -10,7 +10,9 @@ const MedicamentoSchema = new mongoose.Schema({
     presentacion: String,
     cantidad: String,
     posologia: String
-  }]
+  }],
+  precio: { type: Number, default: 0 }, // Nuevo campo para precio
+  estado: { type: String, enum: ['pendiente', 'pagado'], default: 'pendiente' } // Nuevo campo para estado de pago
 }, { timestamps: true });
 
 module.exports = mongoose.model('Medicamento', MedicamentoSchema);
